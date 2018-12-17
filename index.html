@@ -10,48 +10,48 @@
 </head>
 <body>
     <header>
-        <h1 class="akuna america sauce">Star Wars RPG</h1>
+        <h1">Star Wars RPG</h1>
     </header>
     <div class="lineup">
         <div id="1" onclick="chooseHero(this.id)" class="a1 hero character-container">
             <h3>R2-D2</h3>
             <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
-            <h3>HP:<span>45</span></h3>
+            <h3>HP:<span class="health1">-</span></h3>
         </div>
         <div id="2" onclick="chooseHero(this.id)" class="a2 hero character-container">
             <h3>Storm Trooper</h3>
             <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
-            <h3>HP:<span>100</span></h3>
+            <h3>HP:<span class="health2">-</span></h3>
         </div>
         <div id="3" onclick="chooseHero(this.id)"  class="a3 hero character-container">
             <h3>Darth Vader</h3>
             <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
-            <h3>HP:<span>110</span></h3>
+            <h3>HP:<span class="health3">-</span></h3>
         </div>
         <div id="4" onclick="chooseHero(this.id)"  class="a4 hero character-container">
             <h3>Chewbacca</h3>
             <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
-            <h3>HP:<span>150</span></h3>
+            <h3>HP:<span class="health4">-</span></h3>
         </div>
     </div>
     <h2>Choose Your Character</h2>
     <div class="lineup">  
-        <div onclick="chooseEnemy(this.id)" id="R2" class="aR2 a1 character-container disapear enemy">
+        <div onclick="chooseEnemy(this.id)" id="R2-D2" class="R2-D2 a1 character-container disapear enemy">
             <h3>R2-D2</h3>
             <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
             <h3>HP:<span>45</span></h3>
         </div>
-        <div onclick="chooseEnemy(this.id)" id="Trooper" class="aTrooper a2 character-container disapear enemy">
+        <div onclick="chooseEnemy(this.id)" id="Trooper" class="Trooper a2 character-container disapear enemy">
             <h3>StormTrooper</h3>
             <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
             <h3>HP:<span>100</span></h3>
         </div>
-        <div onclick="chooseEnemy(this.id)" id="Vader" class="aVader a3 character-container disapear enemy">
+        <div onclick="chooseEnemy(this.id)" id="Vader" class="Vader a3 character-container disapear enemy">
             <h3>Darth Vader</h3>
             <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
             <h3>HP:<span>110</span></h3>
         </div>
-        <div onclick="chooseEnemy(this.id)" id="Chewbacca" class="aChewbacca a4 character-container disapear enemy">
+        <div onclick="chooseEnemy(this.id)" id="Chewbacca" class="Chewbacca a4 character-container disapear enemy">
             <h3>Chewbacca</h3>
             <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
             <h3>HP:<span>150</span></h3>
@@ -64,27 +64,30 @@
     </div>
     <div>
         <h2>Defender</h2>
-        <div class="aR2 character-container disapear">
+        <div class="R2-D2 character-container disapear">
             <h3>R2-D2</h3>
             <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
-            <h3>HP:<span>45</span></h3>
+            <h3>HP:<span class="enemyhealth-R2-D2">-</span></h3>
         </div>
-        <div class="aTrooper character-container disapear">
+        <div class="Trooper character-container disapear">
             <h3>StormTrooper</h3>
             <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
-            <h3>HP:<span>100</span></h3>
+            <h3>HP:<span class="enemyhealth-Trooper">-</span></h3>
         </div>
-        <div class="aVader character-container disapear">
+        <div class="Vader character-container disapear">
             <h3>Darth Vader</h3>
             <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
-            <h3>HP:<span>110</span></h3>
+            <h3>HP:<span class="enemyhealth-Vader">-</span></h3>
         </div>
-        <div class="aChewbacca character-container disapear">
+        <div class="Chewbacca character-container disapear">
             <h3>Chewbacca</h3>
             <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
-            <h3>HP:<span>150</span></h3>
+            <h3>HP:<span class="enemyhealth-Chewbacca">-</span></h3>
         </div>
-        </div>
+    </div>
+    <h4 class="disapear">You attack <span class="nemesis">---</span>for <span id="damage-given">0</span> damage.</h4>
+    <h4 class="disapear"><span class="nemesis">---</span> attacks you for <span id="mydamage">0</span> damage.</h4>
+    <div class="reset"></div>
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>
