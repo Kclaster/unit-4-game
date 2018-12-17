@@ -1,8 +1,9 @@
 
-let characters = [[1,45],[2, 80], [3, 110], [4, 150]];
+let characters = [[1,45],[2, 80], [3, 1100], [4, 150]];
 let hero = [];
 let nemesis = [];
 let enemiesArr = [['R2-D2', 45], ['Trooper', 80], ['Vader', 110], ['Chewbacca', 150]];
+let deadCount = 0;
 let count = 0;
 let enemyCount = 0;
 let damage = 0;
@@ -11,6 +12,7 @@ let enHealth = 0;
 let myHealth = 0;
 let test = 0;
 let herotest = 0;
+var e = 0;
 
 
 const chooseHero = (props) => {
@@ -39,6 +41,7 @@ const chooseHero = (props) => {
 
 
 const chooseEnemy = (props) => {
+    enemyCount = 0;
     if (enemyCount < 1) {
     enemiesArr.forEach(function(cur) {
         if (cur[0] == props) {
@@ -51,10 +54,12 @@ const chooseEnemy = (props) => {
                 i.classList.toggle("disapear");
             });
         }  else {
-            nemesis.push(props);
             assignName();
         }
     });
+    if (props != undefined) {
+    nemesis.push(props);
+    }
     enemyCount++
 };
 };
@@ -97,6 +102,7 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         enHealth -= strike;
         test.innerHTML = enHealth;
         console.log(enHealth);
+        nextEnemy();
         return strike;
     } else if (hero[0] === "2") {
         let strike = trooperAttack();
@@ -104,6 +110,7 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         enHealth -= strike;
         test.innerHTML = enHealth;
         console.log(enHealth);
+        nextEnemy();
         return strike;
     } else if (hero[0] === "3") {
         let strike = normAttack(35, 120);
@@ -111,6 +118,7 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         enHealth -= strike;
         test.innerHTML = enHealth;
         console.log(enHealth);
+        nextEnemy();
         return strike;
     } else {
         let strike = normAttack(1,150);
@@ -118,9 +126,24 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         enHealth -= strike;
         test.innerHTML = enHealth;
         console.log(enHealth);
+        nextEnemy();
         return strike;
     }
    });
+
+function nextEnemy() {
+    if (enHealth <= 0) {
+        let deadGuy = document.getElementById(`active-${nemesis[e]}`);
+        e++;
+        deadGuy.classList.add("disapear");
+        enHealth = 0;
+        damage = 0;
+        console.log(nemesis);
+        victory();
+        chooseEnemy();
+
+    }
+}
 
 
 // Enemy Attacks
@@ -170,20 +193,36 @@ function gameOver() {
         
 
     }
-}
+};
 
 
 
-const hpTracker = () => {
+const victory = () => {
+    deadCount++;
+    if (deadCount === 3) {
+        document.getElementById(hero[0]).classList.toggle('disapear');
+        var h1 = document.createElement("h1");
+        h1.innerHTML = 'Victory';
+        h1.classList.add('green');
+        document.querySelector('.lineup').appendChild(h1);
 
-}
-
-
-const enemyHpTracker = () => {
-
+        var reset = document.createElement("button");
+        reset.innerHTML="reset";
+        document.querySelector('.reset').appendChild(reset);
+        reset.classList.add('refresh');
+        document.querySelector('.refresh').addEventListener("mousedown", function (){
+            window.location.reload();
+        });
+    }
 };
 
 
 
 
+
+
+
+
+// if you click on two characters it breaks
+// something is broken with trooper attack when trooper is enemy
 
