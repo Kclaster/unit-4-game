@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Star Wars RPG</title>
+</head>
+<body>
+    <header>
+        <h1 class="akuna america sauce">Star Wars RPG</h1>
+    </header>
+    <div class="lineup">
+        <div id="1" onclick="chooseHero(this.id)" class="a1 hero character-container">
+            <h3>R2-D2</h3>
+            <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
+            <h3>HP:<span>45</span></h3>
+        </div>
+        <div id="2" onclick="chooseHero(this.id)" class="a2 hero character-container">
+            <h3>Storm Trooper</h3>
+            <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
+            <h3>HP:<span>100</span></h3>
+        </div>
+        <div id="3" onclick="chooseHero(this.id)"  class="a3 hero character-container">
+            <h3>Darth Vader</h3>
+            <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
+            <h3>HP:<span>110</span></h3>
+        </div>
+        <div id="4" onclick="chooseHero(this.id)"  class="a4 hero character-container">
+            <h3>Chewbacca</h3>
+            <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
+            <h3>HP:<span>150</span></h3>
+        </div>
+    </div>
+    <h2>Choose Your Character</h2>
+    <div class="lineup">  
+        <div onclick="chooseEnemy(this.id)" id="R2" class="aR2 a1 character-container disapear enemy">
+            <h3>R2-D2</h3>
+            <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
+            <h3>HP:<span>45</span></h3>
+        </div>
+        <div onclick="chooseEnemy(this.id)" id="Trooper" class="aTrooper a2 character-container disapear enemy">
+            <h3>StormTrooper</h3>
+            <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
+            <h3>HP:<span>100</span></h3>
+        </div>
+        <div onclick="chooseEnemy(this.id)" id="Vader" class="aVader a3 character-container disapear enemy">
+            <h3>Darth Vader</h3>
+            <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
+            <h3>HP:<span>110</span></h3>
+        </div>
+        <div onclick="chooseEnemy(this.id)" id="Chewbacca" class="aChewbacca a4 character-container disapear enemy">
+            <h3>Chewbacca</h3>
+            <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
+            <h3>HP:<span>150</span></h3>
+        </div>
+    </div>
+    <div>
+        <h2>Enemies Available to Attack</h2>
+        <h2>Fight Section</h2>
+        <button class="hit" type="button">Attack</button>
+    </div>
+    <div>
+        <h2>Defender</h2>
+        <div class="aR2 character-container disapear">
+            <h3>R2-D2</h3>
+            <img class="character" src="./assets/images/r2.jpg" alt="R2-D2">
+            <h3>HP:<span>45</span></h3>
+        </div>
+        <div class="aTrooper character-container disapear">
+            <h3>StormTrooper</h3>
+            <img class="character" src="./assets/images/trooper.jpg" alt="Trooper">
+            <h3>HP:<span>100</span></h3>
+        </div>
+        <div class="aVader character-container disapear">
+            <h3>Darth Vader</h3>
+            <img class="character" src="./assets/images/vader.jpg" alt="Darth Vader">
+            <h3>HP:<span>110</span></h3>
+        </div>
+        <div class="aChewbacca character-container disapear">
+            <h3>Chewbacca</h3>
+            <img class="character" src="./assets/images/wookie.jpg" alt="Chewbacca">
+            <h3>HP:<span>150</span></h3>
+        </div>
+        </div>
+    <script src="assets/javascript/game.js"></script>
+</body>
+</html>

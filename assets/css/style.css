@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../images/background-2.jpg")
+}
+
+img {
+    width: 100px;
+    height: 75px;
+}
+
+h1 {
+    font-size: 38px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    color: white;
+}
+
+.character-container {
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 2vw;
+    width: 120px;
+}
+
+.lineup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.disapear {
+    display: none;
+}
+
+.enemy {
+    background-color: red;
+    border: 1px solid red;
+}
+
+
+.hero {
+    background-color: white;
+}
+
+.hero h3 {
+    color: black;
+}
+
