@@ -83,7 +83,10 @@ header {
 }
 
 .thanks {
-    font-size: 5px;
+    font-size: 10px;
+    position: absolute;
+    top: 90vh;
+    right: 46vw;
 }
 
 .enemy {
@@ -147,4 +150,25 @@ header {
     height: 45vh;
     width: auto;
     top: 45vh;
+}
+
+
+.progress-bar { 
+    background-color: red;
+    width: 300px;
+    height: 25px;
+    margin: 3px;
+    border-radius: 12px;
+}
+
+#my-health {
+    position: absolute;
+    top: 37vh;
+    right: 10vw;
+}
+
+#their-health {
+    position: absolute;
+    top: 37vh;
+    left: 10vw;
 }
