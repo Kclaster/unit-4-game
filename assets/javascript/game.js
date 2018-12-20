@@ -14,22 +14,50 @@ let test = 0;
 let herotest = 0;
 var e = 0;
 
+function iChooseYou(props) {
+var chosenMonster = document.querySelector(`.a${props}`);
+chosenMonster.classList.toggle("selected");
+var hideMe = chosenMonster.querySelectorAll("h3");
+hideMe.forEach(function(cur) {
+    cur.classList.toggle("hide");
+var chosenImage = chosenMonster.querySelector("img");
+chosenImage.classList.add("resize");
+});
+};
+
+
+
+function iChooseThee(props) {
+    var chosenMonster = document.querySelector(`.active-${props}`);
+    chosenMonster.classList.toggle("enemySelected");
+    console.log(chosenMonster);
+    var hideMe = chosenMonster.querySelectorAll("h3");
+    hideMe.forEach(function(cur) {
+        cur.classList.toggle("hide");
+    var chosenImage = chosenMonster.querySelector("img");
+    chosenImage.classList.add("resize");
+    console.log(chosenImage);
+    });
+    };
+
+
 
 const chooseHero = (props) => {
+    document.getElementById("chosen").innerHTML = "Enemies Available to Attack";
     if (count < 1) {
         characters.forEach(function(cur) {
             if (cur[0] != props) {
                 var enemies = document.querySelectorAll(`.a${cur[0]}`);
                 enemies.forEach(function(i) {
                     i.classList.toggle("disapear");
+                    //add code that removes the background to the chosen monster, and changes the text to '', and realigns monster to bottom, and resizes.
             });
             } else {
-
+                iChooseYou(props);
                 myHealth = cur[1]
                 hero.push(props);
                 herotest = document.querySelector(`.health${cur[0]}`);
                 herotest.innerHTML = myHealth;                
-                console.log(hero[0]);
 
             };
         }); 
@@ -41,18 +69,23 @@ const chooseHero = (props) => {
 
 
 const chooseEnemy = (props) => {
-    enemyCount = 0;
     if (enemyCount < 1) {
     enemiesArr.forEach(function(cur) {
         if (cur[0] == props) {
+            console.log(props);
+            iChooseThee(props);
             enHealth = cur[1];
             test = document.querySelector(`.enemyhealth-${cur[0]}`);
             test.innerHTML = enHealth;
             assignName();
-            var enemies = document.querySelectorAll(`.${cur[0]}`);
+            var enemies = document.querySelectorAll(`.active-${cur[0]}`);
             enemies.forEach(function(i) {
                 i.classList.toggle("disapear");
+            var bullpin = document.querySelectorAll(`.${cur[0]}`);
+            bullpin.forEach(function(i) {
+                i.classList.toggle("disapear");
             });
+        });
         }  else {
             assignName();
         }
@@ -101,7 +134,6 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         damage += strike;
         enHealth -= strike;
         test.innerHTML = enHealth;
-        console.log(enHealth);
         nextEnemy();
         return strike;
     } else if (hero[0] === "2") {
@@ -109,7 +141,6 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         damage += strike;
         enHealth -= strike;
         test.innerHTML = enHealth;
-        console.log(enHealth);
         nextEnemy();
         return strike;
     } else if (hero[0] === "3") {
@@ -117,7 +148,6 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         damage += strike;
         enHealth -= strike;
         test.innerHTML = enHealth;
-        console.log(enHealth);
         nextEnemy();
         return strike;
     } else {
@@ -125,7 +155,6 @@ document.querySelector(".hit").addEventListener("mousedown",function rainbow(){
         damage += strike;
         enHealth -= strike;
         test.innerHTML = enHealth;
-        console.log(enHealth);
         nextEnemy();
         return strike;
     }
@@ -138,9 +167,8 @@ function nextEnemy() {
         deadGuy.classList.add("disapear");
         enHealth = 0;
         damage = 0;
-        console.log(nemesis);
         victory();
-        chooseEnemy();
+        enemyCount = 0;
 
     }
 }
@@ -148,19 +176,20 @@ function nextEnemy() {
 
 // Enemy Attacks
    document.querySelector(".hit").addEventListener("mousedown",function(){
-    if (nemesis[0] === "1") {
+       console.log(nemesis[0]);
+    if (nemesis[0] === "R2-D2") {
         let strike = normAttack(50,75);
         enemyDamage += strike;
         myHealth -= strike;
         herotest.innerHTML = myHealth;
         gameOver();
-    } else if (nemesis[0] === "2") {
+    } else if (nemesis[0] === "Trooper") {
         let strike = trooperAttack();
         enemyDamage += strike;
         myHealth -= strike;
         herotest.innerHTML = myHealth;
         gameOver();
-    } else if (nemesis[0] === "3") {
+    } else if (nemesis[0] === "Vader") {
         let strike = normAttack(35,120);
         enemyDamage += strike;
         myHealth -= strike;
@@ -178,13 +207,14 @@ function nextEnemy() {
 function gameOver() {
     if (myHealth <= 0) {
         document.getElementById(hero[0]).classList.toggle('disapear');
-        var h1 = document.createElement("h1");
+        var h1 = document.querySelector("h1");
         h1.innerHTML = 'Game Over';
         h1.classList.add('red');
         document.querySelector('.lineup').appendChild(h1);
 
         var reset = document.createElement("button");
-        reset.innerHTML="reset";
+        reset.innerHTML="Try Again";
+        reset.classList.add("hit");
         document.querySelector('.reset').appendChild(reset);
         reset.classList.add('refresh');
         document.querySelector('.refresh').addEventListener("mousedown", function (){
@@ -201,7 +231,7 @@ const victory = () => {
     deadCount++;
     if (deadCount === 3) {
         document.getElementById(hero[0]).classList.toggle('disapear');
-        var h1 = document.createElement("h1");
+        var h1 = document.querySelector("h1");
         h1.innerHTML = 'Victory';
         h1.classList.add('green');
         document.querySelector('.lineup').appendChild(h1);
@@ -209,7 +239,7 @@ const victory = () => {
         var reset = document.createElement("button");
         reset.innerHTML="reset";
         document.querySelector('.reset').appendChild(reset);
-        reset.classList.add('refresh');
+        reset.classList.add('refresh', 'hit');
         document.querySelector('.refresh').addEventListener("mousedown", function (){
             window.location.reload();
         });
@@ -223,6 +253,8 @@ const victory = () => {
 
 
 
-// if you click on two characters it breaks
-// something is broken with trooper attack when trooper is enemy
 
+
+//Find bug when clicking out of order.
+//Add healthbar
+//Add sound
